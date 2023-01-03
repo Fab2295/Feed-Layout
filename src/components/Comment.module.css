@@ -76,4 +76,13 @@
     font-size: 0.75rem;
     line-height: 1.6;
     color: var(--gray-400);
+<<<<<<< HEAD
+=======
+}
+
+.avatar {
+    width: calc(3rem + 12px);
+    height: calc(3rem + 12px);
+    border-radius: 8px;
+>>>>>>> 7143599 (Layout)
 }
