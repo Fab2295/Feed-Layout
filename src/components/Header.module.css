@@ -1,0 +1,25 @@
+.header {
+    background-color: var(--gray-800);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem;
+}
+
+.header img {
+    height: 2rem;
+    cursor: pointer;
+}
+
+.header img:hover {
+    animation: rotate 4s;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
