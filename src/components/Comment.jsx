@@ -1,9 +1,22 @@
 import { ThumbsUp, Trash } from 'phosphor-react'
+import { useState } from 'react';
 import {Avatar} from './Avatar.jsx'
 
 import styleComment from './Comment.module.css'
 
 export function Comment(props) {
+    const[like, setLike] = useState(0);
+
+    function handleLike(){
+        if(like === 1){
+            // deslike
+            setLike(like => like - 1);
+            return
+        }
+
+        setLike(like => like + 1);
+    }
+
     return (
         <div className={styleComment.comment}>
             <Avatar src={props.imageUser} />
@@ -23,9 +36,9 @@ export function Comment(props) {
                     <p>{props.comment}</p>
                 </div>
                 <footer>
-                    <button>
+                    <button onClick={handleLike}>
                         <ThumbsUp size={20} />
-                        Aplaudir <span>20</span>
+                        Aplaudir <span>{like}</span>
                     </button>
                 </footer>
             </div>

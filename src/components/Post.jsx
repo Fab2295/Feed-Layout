@@ -1,13 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Avatar } from './Avatar';
 import { Comment } from './Comment';
 
 import stylePost from './Post.module.css'
 
 export function Post({ author, content, ...props }) {
+  const [comment, setComment] = useState({});
+  let headers = new Headers();
+
+  headers.append("Accept", "application/json");
+  headers.append("Access-Control-Allow-Origin", "http://127.0.0.1:5173/");
+
   function handleComment(event) {
     event.preventDefault();
   }
+
+  useEffect(() => {
+    // A function to fetch files from github using the api 
+    fetch('https://fab2295.github.io/Json-feed/fake-api.json', {
+      method: 'Get',
+      headers: headers,
+      mode: 'same-origin'
+    }).then(data => data.json())
+      .then(data => console.log(data))
+      // .catch(error => { 
+      //   console.error(error);
+      // });
+  }, [])
 
 
   return (
@@ -47,13 +66,14 @@ export function Post({ author, content, ...props }) {
       </form>
 
       <div className={stylePost.commentList}>
+        {/* {comment.map((value) => {
+
+        })} */}
         <Comment
           userName="Dalcy Fabrício"
           imageUser="https://avatars.githubusercontent.com/u/19378313?v=4"
           comment="Parabéns"
         />
-        {/* <Comment/>
-        <Comment/> */}
       </div>
     </article>
   )
