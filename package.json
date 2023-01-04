@@ -2,6 +2,7 @@
     "name": "react-posts",
     "private": true,
     "version": "0.0.0",
+    "homepage": "https://Fab2295.github.io/Feed-layout",
     "type": "module",
     "scripts": {
         "predeploy": "npm run build",

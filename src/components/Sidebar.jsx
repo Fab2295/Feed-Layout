@@ -5,7 +5,7 @@ import {Avatar} from './Avatar.jsx'
 import imagePerfil from '../assets/Romeu.jpeg'
 import styleSidebar from './Sidebar.module.css'
 
-export function Sidebar() {
+export function Sidebar({avatar, name, description}) {
   return (
     <aside className={styleSidebar.sidebar}>
       <img 
@@ -15,12 +15,12 @@ export function Sidebar() {
 
       <div className={styleSidebar.profile}>
         <Avatar 
-          src="https://avatars.githubusercontent.com/u/19378313?v=4" 
+          src={avatar}
           outline={true}
           border={true}
         />
-        <strong>Dalcy Fabrício</strong>
-        <span>Web and ABAP developer</span>
+        <strong>{name}</strong>
+        <span>{description}</span>
       </div>
 
       <footer>

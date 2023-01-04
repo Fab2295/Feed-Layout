@@ -4,43 +4,30 @@ import { Comment } from './Comment';
 
 import stylePost from './Post.module.css'
 
-export function Post({ author, content, ...props }) {
-  const [comment, setComment] = useState({});
-  let headers = new Headers();
-
-  headers.append("Accept", "application/json");
-  headers.append("Access-Control-Allow-Origin", "http://127.0.0.1:5173/");
+export function Post({ author, content, avatar, description, comments }) {
+  const [comment, setComment] = useState(comments);
+  const [text, setText] = useState('');
 
   function handleComment(event) {
     event.preventDefault();
   }
 
-  useEffect(() => {
-    // A function to fetch files from github using the api 
-    fetch('https://fab2295.github.io/Json-feed/fake-api.json', {
-      method: 'Get',
-      headers: headers,
-      mode: 'same-origin'
-    }).then(data => data.json())
-      .then(data => console.log(data))
-      // .catch(error => { 
-      //   console.error(error);
-      // });
-  }, [])
-
+  function handleOnChangeText({target}){
+    setText(target.value)
+  }
 
   return (
     <article className={stylePost.post}>
       <header>
         <div className={stylePost.author}>
           <Avatar
-            src="https://avatars.githubusercontent.com/u/19378313?v=4"
+            src={avatar}
             outline={true}
             border={true}
           />
           <div className={stylePost.authorInfo}>
             <strong>{author}</strong>
-            <span>Web developer</span>
+            <span>{description}</span>
           </div>
         </div>
 
@@ -48,10 +35,7 @@ export function Post({ author, content, ...props }) {
       </header>
 
       <div className={stylePost.content}>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non illum quibusdam magnam sed, cupiditate dolore deserunt praesentium odit dolor quos quae dolorum aliquam suscipit! Cumque delectus labore ullam molestiae aperiam?</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non illum quibusdam magnam sed, cupiditate dolore deserunt praesentium odit dolor quos quae dolorum aliquam suscipit! Cumque delectus labore ullam molestiae aperiam?</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non illum quibusdam magnam sed, cupiditate dolore deserunt praesentium odit dolor quos quae dolorum aliquam suscipit! Cumque delectus labore ullam molestiae aperiam?</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Non illum quibusdam magnam sed, cupiditate dolore deserunt praesentium odit dolor quos quae dolorum aliquam suscipit! Cumque delectus labore ullam molestiae aperiam?</p>
+        {content}
       </div>
 
 
@@ -59,6 +43,8 @@ export function Post({ author, content, ...props }) {
         <strong>Deixei seu feedback</strong>
         <textarea
           placeholder='Deixe seu comentario'
+          value={text}
+          onChange={handleOnChangeText}
         />
         <footer>
           <button type='submit' onClick={handleComment}>Comentar</button>
@@ -66,14 +52,18 @@ export function Post({ author, content, ...props }) {
       </form>
 
       <div className={stylePost.commentList}>
-        {/* {comment.map((value) => {
+        {comment.map((value) => {
+          return (
+            <Comment
+              key={value.id}
+              userName={value['author_comment']}
+              imageUser={value['avatar_comment']}
+              comment={value.comment}
+              likes={value.likes}
+            />
+          )
+        })}
 
-        })} */}
-        <Comment
-          userName="Dalcy Fabrício"
-          imageUser="https://avatars.githubusercontent.com/u/19378313?v=4"
-          comment="Parabéns"
-        />
       </div>
     </article>
   )

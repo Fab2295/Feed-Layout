@@ -5,10 +5,10 @@ import {Avatar} from './Avatar.jsx'
 import styleComment from './Comment.module.css'
 
 export function Comment(props) {
-    const[like, setLike] = useState(0);
+    const[like, setLike] = useState(props.likes);
 
     function handleLike(){
-        if(like === 1){
+        if(like > props.likes){
             // deslike
             setLike(like => like - 1);
             return
