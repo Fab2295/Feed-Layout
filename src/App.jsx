@@ -3,18 +3,20 @@ import { Header } from './components/Header'
 import { Post } from './components/Post'
 import { Sidebar } from './components/Sidebar';
 
+import data from './model/user.json'
+
 import './global.css';
 import stylesApp from './App.module.css';
 
 function App() {
-  const [data, setData] = useState({});
+  // const [data, setData] = useState({});
 
-  useEffect(() => {
-    fetch('./src/model/user.json')
-      .then(data => data.text())
-      .then(json => JSON.parse(json))
-      .then(json => setData(json))
-  }, [])
+  // useEffect(() => {
+  //   fetch('./src/model/user.json')
+  //     .then(data => data.text())
+  //     .then(json => JSON.parse(json))
+  //     .then(json => setData(json))
+  // }, [])
 
   return (
     <>
