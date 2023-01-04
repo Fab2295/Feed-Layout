@@ -1,4 +1,5 @@
 import React from 'react'
+import { Avatar } from './Avatar';
 import { Comment } from './Comment';
 
 import stylePost from './Post.module.css'
@@ -13,9 +14,10 @@ export function Post({ author, content, ...props }) {
     <article className={stylePost.post}>
       <header>
         <div className={stylePost.author}>
-          <img
-            className={stylePost.avatar}
+          <Avatar
             src="https://avatars.githubusercontent.com/u/19378313?v=4"
+            outline={true}
+            border={true}
           />
           <div className={stylePost.authorInfo}>
             <strong>{author}</strong>
@@ -45,9 +47,13 @@ export function Post({ author, content, ...props }) {
       </form>
 
       <div className={stylePost.commentList}>
-        <Comment/>
-        <Comment/>
-        <Comment/>
+        <Comment
+          userName="Dalcy Fabrício"
+          imageUser="https://avatars.githubusercontent.com/u/19378313?v=4"
+          comment="Parabéns"
+        />
+        {/* <Comment/>
+        <Comment/> */}
       </div>
     </article>
   )
