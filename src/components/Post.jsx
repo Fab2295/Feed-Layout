@@ -1,20 +1,33 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+
+import { getNextIdInArrayObject } from '../utils/utils.js'
+
 import { Avatar } from './Avatar';
 import { Comment } from './Comment';
 
 import stylePost from './Post.module.css'
 
-export function Post({ author, content, avatar, description, comments }) {
+export function Post({ author, content, avatar, description, comments, ...props }) {
   const [comment, setComment] = useState(comments);
   const [text, setText] = useState('');
 
   function handleComment(event) {
     event.preventDefault();
+
+    setComment([{
+      "id": getNextIdInArrayObject(comment),
+      "author_comment": props.userName,
+      "avatar_comment": props.avatarProfile,
+      "comment": text,
+      "likes": 0
+
+    }, ...comment])
   }
 
-  function handleOnChangeText({target}){
+  function handleOnChangeText({ target }) {
     setText(target.value)
   }
+
 
   return (
     <article className={stylePost.post}>
@@ -52,7 +65,7 @@ export function Post({ author, content, avatar, description, comments }) {
       </form>
 
       <div className={stylePost.commentList}>
-        {comment.map((value) => {
+        {comment?.map((value) => {
           return (
             <Comment
               key={value.id}
