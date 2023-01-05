@@ -1,7 +1,10 @@
-// import { useEffect, useState } from 'react';
+import { useState } from 'react';
+
 import { Header } from './components/Header'
 import { Post } from './components/Post'
 import { Sidebar } from './components/Sidebar';
+
+import { getNextIdInArrayObject } from './utils/utils.js'
 
 import data from './model/user.json'
 
@@ -9,14 +12,27 @@ import './global.css';
 import stylesApp from './App.module.css';
 
 function App() {
-  // const [data, setData] = useState({});
+  const [textPost, setTextPost] = useState('');
+  const [post, setPost] = useState(data.posts);
 
-  // useEffect(() => {
-  //   fetch('./src/model/user.json')
-  //     .then(data => data.text())
-  //     .then(json => JSON.parse(json))
-  //     .then(json => setData(json))
-  // }, [])
+  function handleOnChangeTextPost({ target }) {
+    setTextPost(target.value)
+  }
+
+  function handlePost(event) {
+    event.preventDefault();
+
+    let { userName, profileDescription, avatar } = data;
+
+    setPost([{
+      "id": getNextIdInArrayObject(post),
+      "author": userName,
+      "description": profileDescription,
+      "avatar": avatar,
+      "text": textPost,
+      "comments": []
+    }, ...post])
+  }
 
   return (
     <>
@@ -28,7 +44,19 @@ function App() {
           description={data.profileDescription}
         />
         <main>
-          {data?.posts?.map((value) => {
+          <div className={stylesApp.post}>
+            <form className={stylesApp.postForm}>
+              <textarea
+                placeholder='Crie seu post'
+                value={textPost}
+                onChange={handleOnChangeTextPost}
+              />
+              <footer>
+                <button onClick={handlePost} type='submit'>Comentar</button>
+              </footer>
+            </form>
+          </div>
+          {post?.map((value) => {
             return (
               <Post
                 key={value.id}
@@ -37,6 +65,8 @@ function App() {
                 avatar={value.avatar}
                 description={value.description}
                 comments={value.comments}
+                userName={data.userName}
+                avatarProfile={data.avatar}
               />)
           })}
         </main>

@@ -8,6 +8,48 @@
     align-items: flex-start;
 }
 
+.post {
+    background-color: var(--gray-800);
+    border-radius: 8px;
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.postForm {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.postForm textarea {
+    width: 100%;
+    background: var(--gray-900);
+    border: 0;
+    resize: none;
+    height: 6rem;
+    padding: 1rem;
+    border-radius: 8px;
+    color: var(--gray-100);
+    line-height: 1.4;
+    border: 1px solid var(--green-500);
+}
+
+.postForm button[type=submit] {
+    padding: 1rem 1.5rem;
+    margin-top: 1rem;
+    border-radius: 8px;
+    border: 0;
+    background: var(--green-500);
+    color: var(--white);
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border: 1px solid var(--green-300);
+}
+
+.postForm button[type=submit]:hover {
+    background: var(--green-300);
+}
+
 @media(max-width: 768px) {
     html {
         font-size: 87.5%;
