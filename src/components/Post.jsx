@@ -22,6 +22,7 @@ export function Post({ author, content, avatar, description, comments, ...props 
       "likes": 0
 
     }, ...comment])
+    setText('');
   }
 
   function handleOnChangeText({ target }) {

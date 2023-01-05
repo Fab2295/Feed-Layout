@@ -32,6 +32,8 @@ function App() {
       "text": textPost,
       "comments": []
     }, ...post])
+
+    setTextPost('')
   }
 
   return (
