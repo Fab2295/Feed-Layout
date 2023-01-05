@@ -52,7 +52,7 @@ export function Post({ author, content, avatar, description, comments, ...props 
       </div>
 
 
-      <form className={stylePost.commentForm}>
+      <form onSubmit={handleComment} className={stylePost.commentForm}>
         <strong>Deixei seu feedback</strong>
         <textarea
           placeholder='Deixe seu comentario'
@@ -60,7 +60,7 @@ export function Post({ author, content, avatar, description, comments, ...props 
           onChange={handleOnChangeText}
         />
         <footer>
-          <button type='submit' onClick={handleComment}>Comentar</button>
+          <button type='submit'>Comentar</button>
         </footer>
       </form>
 

@@ -45,14 +45,14 @@ function App() {
         />
         <main>
           <div className={stylesApp.post}>
-            <form className={stylesApp.postForm}>
+            <form  onSubmit={handlePost} className={stylesApp.postForm}>
               <textarea
                 placeholder='Crie seu post'
                 value={textPost}
                 onChange={handleOnChangeTextPost}
               />
               <footer>
-                <button onClick={handlePost} type='submit'>Publicar</button>
+                <button type='submit'>Publicar</button>
               </footer>
             </form>
           </div>
