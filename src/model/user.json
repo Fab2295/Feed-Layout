@@ -9,19 +9,22 @@
             "author": "Pessoa 1",
             "description": "Web developer",
             "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non illum quibusdam magnam sed, cupiditate dolore deserunt praesentium odit dolor quos quae dolorum aliquam suscipit! Cumque delectus labore ullam molestiae aperiam?",
+            "publishedAt": "2022-05-03T20:00:00",
             "comments": [{
                     "id": 1,
                     "author_comment": "Pessoa 2",
                     "avatar_comment": "https://avatars.githubusercontent.com/u/19378313?v=4",
                     "comment": "Coo! 😍",
-                    "likes": 10
+                    "likes": 10,
+                    "publishedAt": "2022-06-01T17:00:00"
                 },
                 {
                     "id": 2,
                     "author_comment": "Pessoa 3",
                     "avatar_comment": "https://avatars.githubusercontent.com/u/19378312?v=4",
                     "comment": "NICE!!!!",
-                    "likes": 5
+                    "likes": 5,
+                    "publishedAt": "2022-06-01T17:00:00"
                 }
             ]
         },
@@ -32,11 +35,13 @@
             "author": "Pessoa 10",
             "description": "Mobile Developer",
             "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Non illum quibusdam magnam sed, cupiditate dolore deserunt praesentium odit dolor quos quae dolorum aliquam suscipit! Cumque delectus labore ullam molestiae aperiam?",
+            "publishedAt": "2022-04-03T18:00:00",
             "comments": [{
                 "id": 1,
                 "author_comment": "Pessoa 1",
                 "avatar_comment": "https://avatars.githubusercontent.com/u/19378313?v=4",
                 "comment": "OK!",
+                "publishedAt": "2022-05-01T17:00:00",
                 "likes": 1
             }]
         }
