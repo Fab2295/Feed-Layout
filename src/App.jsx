@@ -52,7 +52,7 @@ function App() {
                 onChange={handleOnChangeTextPost}
               />
               <footer>
-                <button onClick={handlePost} type='submit'>Comentar</button>
+                <button onClick={handlePost} type='submit'>Publicar</button>
               </footer>
             </form>
           </div>
@@ -67,6 +67,7 @@ function App() {
                 comments={value.comments}
                 userName={data.userName}
                 avatarProfile={data.avatar}
+                publishedDate={value.publishedAt}
               />)
           })}
         </main>
