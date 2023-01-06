@@ -29,6 +29,14 @@ export function Post({ author, content, avatar, description, comments, ...props 
     setText(target.value)
   }
 
+  function onDeleteComment(commentOnDelete) {
+    const commentsWithoutDeletedOne = comment.filter(value => {
+      return value.id !== commentOnDelete;
+    })
+
+    setComment(commentsWithoutDeletedOne)
+  }
+
 
   return (
     <article className={stylePost.post}>
@@ -70,10 +78,12 @@ export function Post({ author, content, avatar, description, comments, ...props 
           return (
             <Comment
               key={value.id}
+              id={value.id}
               userName={value['author_comment']}
               imageUser={value['avatar_comment']}
               comment={value.comment}
               likes={value.likes}
+              onDelete={onDeleteComment}
             />
           )
         })}

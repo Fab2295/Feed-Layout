@@ -17,6 +17,10 @@ export function Comment(props) {
         setLike(like => like + 1);
     }
 
+    function handleDeleteComment(){
+        props.onDelete(props.id);
+    }
+
     return (
         <div className={styleComment.comment}>
             <Avatar src={props.imageUser} />
@@ -28,7 +32,7 @@ export function Comment(props) {
                             <time dateTime='2023-01-01 08:39:24'>Cerca de 1 hora atrás</time>
                         </div>
 
-                        <button title='Deletar comentário'>
+                        <button onClick={handleDeleteComment} title='Deletar comentário'>
                             <Trash size={24} />
                         </button>
                     </header>
