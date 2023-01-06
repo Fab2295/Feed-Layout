@@ -1,6 +1,8 @@
 import { format, formatDistanceToNow } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 export function getNextIdInArrayObject(array) {
+    if (array.length === 0) return 1;
+
     return (Math.max(...array.map(value => value.id)) + 1)
 }
 
