@@ -16,7 +16,12 @@ function App() {
   const [post, setPost] = useState(data.posts);
 
   function handleOnChangeTextPost({ target }) {
+    target.setCustomValidity('')
     setTextPost(target.value)
+  }
+
+  function handleNewCommentInvality({ target }) {
+    target.setCustomValidity('Esse campo é obrigátorio')
   }
 
   function handlePost(event) {
@@ -47,14 +52,16 @@ function App() {
         />
         <main>
           <div className={stylesApp.post}>
-            <form  onSubmit={handlePost} className={stylesApp.postForm}>
+            <form onSubmit={handlePost} className={stylesApp.postForm}>
               <textarea
                 placeholder='Crie seu post'
                 value={textPost}
                 onChange={handleOnChangeTextPost}
+                required
+                onInvalid={handleNewCommentInvality}
               />
               <footer>
-                <button type='submit'>Publicar</button>
+                <button disabled={textPost.length === 0} type='submit'>Publicar</button>
               </footer>
             </form>
           </div>

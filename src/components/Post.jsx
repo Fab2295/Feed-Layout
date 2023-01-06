@@ -26,7 +26,12 @@ export function Post({ author, content, avatar, description, comments, ...props 
   }
 
   function handleOnChangeText({ target }) {
+    target.setCustomValidity('')
     setText(target.value)
+  }
+
+  function handleNewCommentInvality({ target }) {
+    target.setCustomValidity('Esse campo é obrigátorio')
   }
 
   function onDeleteComment(commentOnDelete) {
@@ -67,9 +72,11 @@ export function Post({ author, content, avatar, description, comments, ...props 
           placeholder='Deixe seu comentario'
           value={text}
           onChange={handleOnChangeText}
+          onInvalid={handleNewCommentInvality}
+          required
         />
         <footer>
-          <button type='submit'>Comentar</button>
+          <button disabled={text.length === 0} type='submit'>Comentar</button>
         </footer>
       </form>
 
